@@ -80,7 +80,7 @@ onMounted(async () => {
         <div>
           <h3 class="text-sm font-medium text-red-700 mb-2">Overdue</h3>
           <div v-if="!health?.overdueMaintenanceDrones.length" class="text-sm text-gray-500">All clear.</div>
-          <div v-else class="bg-white rounded-lg border border-red-200 overflow-hidden">
+          <div v-else class="bg-white rounded-lg border border-red-200 overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200 text-sm">
               <thead class="bg-red-50">
                 <tr>
@@ -112,7 +112,7 @@ onMounted(async () => {
         <div>
           <h3 class="text-sm font-medium text-amber-700 mb-2">Due within 7 days</h3>
           <div v-if="!health?.dueSoonDrones?.length" class="text-sm text-gray-500">All clear.</div>
-          <div v-else class="bg-white rounded-lg border border-amber-200 overflow-hidden">
+          <div v-else class="bg-white rounded-lg border border-amber-200 overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200 text-sm">
               <thead class="bg-amber-50">
                 <tr>
@@ -155,7 +155,7 @@ onMounted(async () => {
       <h2 class="text-lg font-semibold text-gray-700 mb-3">Upcoming Missions</h2>
       <div v-if="missionsLoading" class="text-sm text-gray-500">Loading…</div>
       <div v-else-if="!upcomingMissions.length" class="text-sm text-gray-500">No planned missions.</div>
-      <div v-else class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <div v-else class="bg-white rounded-lg border border-gray-200 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
           <thead class="bg-gray-50">
             <tr>
@@ -184,7 +184,7 @@ onMounted(async () => {
       <h2 class="text-lg font-semibold text-gray-700 mb-3">Recent Missions</h2>
       <div v-if="missionsLoading" class="text-sm text-gray-500">Loading…</div>
       <div v-else-if="!recentMissions.length" class="text-sm text-gray-500">No completed missions.</div>
-      <div v-else class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <div v-else class="bg-white rounded-lg border border-gray-200 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
           <thead class="bg-gray-50">
             <tr>

@@ -138,7 +138,7 @@ async function retire() {
       <!-- Mission History -->
       <div v-if="activeTab === 'missions'" class="mt-4">
         <div v-if="missionsLoading" class="text-sm text-gray-500">Loading…</div>
-        <div v-else class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <div v-else class="bg-white rounded-lg border border-gray-200 overflow-x-auto">
           <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-50">
               <tr>
@@ -170,7 +170,7 @@ async function retire() {
       <!-- Maintenance History -->
       <div v-if="activeTab === 'maintenance'" class="mt-4">
         <div v-if="maintenanceLoading" class="text-sm text-gray-500">Loading…</div>
-        <div v-else class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <div v-else class="bg-white rounded-lg border border-gray-200 overflow-x-auto">
           <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-50">
               <tr>

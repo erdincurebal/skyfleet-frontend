@@ -107,7 +107,7 @@ function droneSerial(droneId: string) {
 
     <div v-if="error" class="bg-red-50 border border-red-200 text-red-700 rounded p-4">{{ error }}</div>
 
-    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+    <div class="bg-white rounded-lg border border-gray-200 overflow-x-auto">
       <div v-if="loading" class="p-8 text-center text-gray-500 text-sm">Loading…</div>
       <table v-else class="min-w-full divide-y divide-gray-200 text-sm">
         <thead class="bg-gray-50">
