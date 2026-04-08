@@ -26,7 +26,10 @@ async function submitCreate() {
   creating.value = true
   createError.value = null
   try {
-    await dronesApi.create(form.value)
+    await dronesApi.create({
+      serialNumber: form.value.serialNumber.trim().toUpperCase(),
+      model: form.value.model,
+    })
     showCreate.value = false
     form.value = { serialNumber: '', model: DroneModel.PHANTOM_4 }
     await load()
