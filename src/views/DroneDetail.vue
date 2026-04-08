@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { dronesApi } from '../api'
 import { useMissions } from '../composables/useMissions'
 import { useMaintenance } from '../composables/useMaintenance'
@@ -12,7 +12,6 @@ import { useToast } from '../composables/useToast'
 const toast = useToast()
 
 const route = useRoute()
-const router = useRouter()
 const id = route.params.id as string
 
 const drone = ref<Drone | null>(null)
@@ -43,8 +42,10 @@ async function retire() {
   retireError.value = null
   try {
     await dronesApi.retire(id)
-    toast.success(`Drone ${drone.value?.serialNumber ?? ''} retired`)
-    router.push('/drones')
+    const serial = drone.value?.serialNumber ?? ''
+    drone.value = await dronesApi.get(id)
+    retireConfirm.value = false
+    toast.success(`Drone ${serial} retired`)
   } catch (e) {
     retireError.value = e instanceof Error ? e.message : 'Failed to retire drone'
     retireConfirm.value = false
