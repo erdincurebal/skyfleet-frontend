@@ -146,7 +146,7 @@ function droneSerial(droneId: string) {
 
     <AppModal v-if="showCreate" title="New Mission" @close="showCreate = false">
       <form class="space-y-4" @submit.prevent="submitCreate">
-        <div v-if="createError" class="bg-red-50 border border-red-200 text-red-700 rounded p-3 text-sm">{{ createError }}</div>
+        <div v-if="createError" class="bg-red-50 border border-red-200 text-red-700 rounded p-3 text-sm whitespace-pre-line">{{ createError }}</div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
           <input data-testid="mission-name" v-model="form.name" type="text" required class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />

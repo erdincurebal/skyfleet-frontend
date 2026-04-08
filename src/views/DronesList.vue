@@ -105,7 +105,7 @@ async function submitCreate() {
 
     <AppModal v-if="showCreate" title="New Drone" @close="showCreate = false">
       <form class="space-y-4" @submit.prevent="submitCreate">
-        <div v-if="createError" class="bg-red-50 border border-red-200 text-red-700 rounded p-3 text-sm">{{ createError }}</div>
+        <div v-if="createError" class="bg-red-50 border border-red-200 text-red-700 rounded p-3 text-sm whitespace-pre-line">{{ createError }}</div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Serial Number</label>
           <input

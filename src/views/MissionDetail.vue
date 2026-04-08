@@ -131,7 +131,7 @@ onMounted(loadMission)
       <!-- State Transitions -->
       <div v-if="nextTransitions.length" class="bg-white rounded-lg border border-gray-200 p-6">
         <h3 class="text-sm font-semibold text-gray-700 mb-3">State Transition</h3>
-        <div v-if="transitionError" class="bg-red-50 border border-red-200 text-red-700 rounded p-3 text-sm mb-3">{{ transitionError }}</div>
+        <div v-if="transitionError" class="bg-red-50 border border-red-200 text-red-700 rounded p-3 text-sm mb-3 whitespace-pre-line">{{ transitionError }}</div>
 
         <div v-if="!pendingTarget" class="flex gap-2 flex-wrap">
           <button

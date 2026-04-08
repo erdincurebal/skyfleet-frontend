@@ -86,7 +86,7 @@ async function retire() {
 
       <!-- Actions -->
       <div v-if="drone.status === 'AVAILABLE'" class="pt-2 border-t border-gray-100">
-        <div v-if="retireError" class="bg-red-50 border border-red-200 text-red-700 rounded p-3 text-sm mb-3">{{ retireError }}</div>
+        <div v-if="retireError" class="bg-red-50 border border-red-200 text-red-700 rounded p-3 text-sm mb-3 whitespace-pre-line">{{ retireError }}</div>
         <div v-if="!retireConfirm">
           <button
             class="px-4 py-2 text-sm bg-red-600 text-white rounded hover:bg-red-700"
