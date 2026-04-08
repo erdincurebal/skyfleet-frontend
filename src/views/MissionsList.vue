@@ -9,6 +9,9 @@ import AppModal from '../components/AppModal.vue'
 import { formatDateTime } from '../utils/format'
 import { MissionStatus, MissionType } from '../types'
 import type { CreateMissionPayload } from '../api'
+import { useToast } from '../composables/useToast'
+
+const toast = useToast()
 
 const { page, limit, status, filterDroneId, from, to, result, loading, error, load } = useMissions()
 const { result: dronesResult } = useDrones()
@@ -37,7 +40,7 @@ async function submitCreate() {
   creating.value = true
   createError.value = null
   try {
-    await missionsApi.create({
+    const created = await missionsApi.create({
       ...form.value,
       plannedStart: new Date(form.value.plannedStart).toISOString(),
       plannedEnd: new Date(form.value.plannedEnd).toISOString(),
@@ -45,6 +48,7 @@ async function submitCreate() {
     showCreate.value = false
     form.value = emptyForm()
     await load()
+    toast.success(`Mission "${created.name}" scheduled`)
   } catch (e) {
     createError.value = e instanceof Error ? e.message : 'Failed to create mission'
   } finally {

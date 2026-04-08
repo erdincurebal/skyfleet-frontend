@@ -8,6 +8,9 @@ import AppModal from '../components/AppModal.vue'
 import { formatDateTime, formatHours } from '../utils/format'
 import { MaintenanceType } from '../types'
 import type { CreateMaintenanceLogPayload } from '../api'
+import { useToast } from '../composables/useToast'
+
+const toast = useToast()
 
 const { page, limit, droneId, result, loading, error, load } = useMaintenance()
 const { result: dronesResult } = useDrones()
@@ -58,6 +61,7 @@ async function submitCreate() {
     showCreate.value = false
     form.value = emptyForm()
     await load()
+    toast.success('Maintenance log recorded')
   } catch (e) {
     createError.value = e instanceof Error ? e.message : 'Failed to create maintenance log'
   } finally {

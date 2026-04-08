@@ -5,6 +5,9 @@ import { missionsApi } from '../api'
 import StatusBadge from '../components/StatusBadge.vue'
 import { formatDateTime } from '../utils/format'
 import type { Mission, MissionStatus } from '../types'
+import { useToast } from '../composables/useToast'
+
+const toast = useToast()
 
 const route = useRoute()
 const id = route.params.id as string
@@ -60,6 +63,7 @@ async function confirmTransition() {
     if (pendingTarget.value === 'COMPLETED') payload.loggedFlightHours = loggedFlightHours.value
     if (pendingTarget.value === 'ABORTED') payload.abortReason = abortReason.value
     mission.value = await missionsApi.transition(id, payload)
+    toast.success(`Mission transitioned to ${pendingTarget.value}`)
     pendingTarget.value = null
   } catch (e) {
     transitionError.value = e instanceof Error ? e.message : 'Transition failed'

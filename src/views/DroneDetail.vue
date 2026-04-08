@@ -7,6 +7,9 @@ import { useMaintenance } from '../composables/useMaintenance'
 import StatusBadge from '../components/StatusBadge.vue'
 import { formatDate, formatDateTime, formatHours } from '../utils/format'
 import type { Drone } from '../types'
+import { useToast } from '../composables/useToast'
+
+const toast = useToast()
 
 const route = useRoute()
 const router = useRouter()
@@ -40,6 +43,7 @@ async function retire() {
   retireError.value = null
   try {
     await dronesApi.retire(id)
+    toast.success(`Drone ${drone.value?.serialNumber ?? ''} retired`)
     router.push('/drones')
   } catch (e) {
     retireError.value = e instanceof Error ? e.message : 'Failed to retire drone'
