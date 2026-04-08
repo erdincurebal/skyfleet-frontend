@@ -1,0 +1,16 @@
+# Dev compose: Vite dev server with hot reload via bind mount.
+# Backend must be reachable at VITE_API_URL (host network or separate service).
+
+services:
+  web:
+    image: node:20-alpine
+    container_name: skyops-web-dev
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:3000}
+    ports:
+      - '5173:5173'
+    volumes:
+      - .:/app
+      - /app/node_modules
